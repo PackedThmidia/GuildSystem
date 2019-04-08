@@ -1,0 +1,33 @@
+{
+  "name": "guildsystem",
+  "version": "1.0.0",
+  "description": "GuildSystemServer",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PackedThmidia/GuildSystem.git"
+  },
+  "author": "PackedThmidia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PackedThmidia/GuildSystem/issues"
+  },
+  "homepage": "https://github.com/PackedThmidia/GuildSystem#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "passport": "^0.4.0",
+    "pg": "^7.9.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^5.2.9",
+    "socket.io": "^2.2.0",
+    "ws": "^6.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
+}
