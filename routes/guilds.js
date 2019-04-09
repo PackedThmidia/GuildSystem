@@ -14,7 +14,7 @@ router.post('/', (req, res) => {
   res.send('New guild creation');
 });
 
-router.update('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   res.send('Updates sth withing guild');
 });
 

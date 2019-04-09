@@ -5,14 +5,14 @@ module.exports = {
     password: 'database_dev',
     database: 'database_dev',
     host: '127.0.0.1',
-    dialect: 'postgres'
+    dialect: 'postgres',
   },
   test: {
     username: 'database_test',
     password: null,
     database: 'database_test',
     host: '127.0.0.1',
-    dialect: 'postgres'
+    dialect: 'postgres',
   },
   production: {
     username: process.env.DB_USERNAME,
@@ -20,5 +20,5 @@ module.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOSTNAME,
     dialect: 'postgres',
-  }
+  },
 };
