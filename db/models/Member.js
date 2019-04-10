@@ -1,6 +1,6 @@
 const sequelize = require('sequelize');
 
-const Member = sequelize.define('user', {
+const Member = sequelize.define('member', {
   // attributes
   description: {
     type: sequelize.STRING,

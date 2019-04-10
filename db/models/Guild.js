@@ -1,12 +1,12 @@
 const sequelize = require('sequelize');
 
-const User = sequelize.define('user', {
+const Guild = sequelize.define('guild', {
   // attributes
-  username: {
+  status: {
     type: sequelize.STRING,
     allowNull: false,
   },
 }, {
 });
 
-module.exports = User;
+module.exports = Guild;
