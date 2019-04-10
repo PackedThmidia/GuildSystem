@@ -1,12 +1,20 @@
-const sequelize = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  const Guild = sequelize.define('guild', {
+    // attributes
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  });
 
-const Guild = sequelize.define('guild', {
-  // attributes
-  status: {
-    type: sequelize.STRING,
-    allowNull: false,
-  },
-}, {
-});
+  Guild.associate = (models) => {
+    models.Task.hasMany(models.User, {
+      onDelete: 'CASCADE',
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
 
-module.exports = Guild;
+  return Guild;
+};
