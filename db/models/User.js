@@ -1,14 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('user', {
+  const User = sequelize.define('User', {
     // attributes
     username: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
   });
 
   User.associate = (models) => {
-    models.User.belongsTo(models.Member, {
+    models.User.hasMany(models.Member, {
       onDelete: 'CASCADE',
       foreignKey: {
         allowNull: false,

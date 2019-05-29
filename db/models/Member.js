@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Member = sequelize.define('member', {
+  const Member = sequelize.define('Member', {
     // attributes
     description: {
       type: DataTypes.STRING,
@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Member.associate = (models) => {
-    models.Task.belongsTo(models.User, {
+    models.Member.belongsTo(models.Guild, {
       onDelete: 'CASCADE',
       foreignKey: {
         allowNull: false,
