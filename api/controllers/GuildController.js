@@ -1,6 +1,6 @@
 
-import GuildService from '../services/GuildService';
-import Util from '../utils/Utils';
+const GuildService = require('../services/GuildService');
+const Util = require('../utils/Utils');
 
 const util = new Util();
 
@@ -104,5 +104,4 @@ class GuildController {
     }
   }
 }
-
-export default GuildController;
+module.exports = GuildController;

@@ -1,13 +1,14 @@
 
-import MemberService from '../services/MemberService';
-import Util from '../utils/Utils';
+const MemberService = require('../services/MemberService');
+const Util = require('../utils/Utils');
 
 const util = new Util();
 
 class MemberController {
   static async getAllMembers(req, res) {
     try {
-      const allMembers = await MemberService.getAllMembers();
+      const { gid } = req.params;
+      const allMembers = await MemberService.getAllMembers(gid);
       if (allMembers.length > 0) {
         util.setSuccess(200, 'Members retrieved', allMembers);
       } else {
@@ -28,7 +29,7 @@ class MemberController {
     const newMember = req.body;
     try {
       const createdMember = await MemberService.addMember(newMember);
-      util.setSuccess(201, 'Book Added!', createdMember);
+      util.setSuccess(201, 'Member Added!', createdMember);
       return util.send(res);
     } catch (error) {
       util.setError(400, error.message);
@@ -92,9 +93,9 @@ class MemberController {
       const MemberToDelete = await MemberService.deleteMember(id);
 
       if (MemberToDelete) {
-        util.setSuccess(200, 'Book deleted');
+        util.setSuccess(200, 'Member deleted');
       } else {
-        util.setError(404, `Book with the id ${id} cannot be found`);
+        util.setError(404, `Member with the id ${id} cannot be found`);
       }
       return util.send(res);
     } catch (error) {
@@ -104,4 +105,4 @@ class MemberController {
   }
 }
 
-export default MemberController;
+module.exports = MemberController;

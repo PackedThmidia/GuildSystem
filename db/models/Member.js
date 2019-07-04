@@ -5,6 +5,20 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    // GuildId: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: 'Guilds',
+    //     key: 'id'
+    //   },
+    // },
+    // UserId: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: 'Users', // Can be a string
+    //     key: 'id'
+    //   },
+    // }
   });
 
   Member.associate = (models) => {

@@ -17,9 +17,9 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  Guild.associate = (models) => {
-    models.Guild.hasMany(models.Member, { onDelete: 'CASCADE' });
-  };
+  // Guild.associate = (models) => {
+  //   models.Guild.hasMany(models.Member, { onDelete: 'CASCADE', allowNull: false });
+  // };
 
   return Guild;
 };

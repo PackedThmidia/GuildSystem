@@ -1,0 +1,18 @@
+# [START appengine_websockets_yaml]
+runtime: nodejs
+env: flex
+manual_scaling:
+  instances: 1
+network:
+  session_affinity: true
+  forwarded_ports:
+    - 65080
+# [END appengine_websockets_yaml]
+env_variables:
+  SQL_USER: postgres
+  SQL_PASSWORD: fdkj409fjm234ghgj54
+  SQL_DATABASE: postgres
+  NODE_ENV: production
+  INSTANCE_CONNECTION_NAME: bustling-theme-232818:europe-west3:guildsqldb
+beta_settings:
+  cloud_sql_instances: bustling-theme-232818:europe-west3:guildsqldb

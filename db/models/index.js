@@ -1,7 +1,7 @@
-import fs from 'fs';
-import path from 'path';
-import Sequelize from 'sequelize';
-import configJson from '../../config/config';
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
+const configJson = require('../../config/config');
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV ? process.env.NODE_ENV : 'development';
@@ -11,22 +11,20 @@ const config = configJson[env];
 console.log('this is the environment: ', env);
 
 const db = {};
-
 let sequelize;
 if (config.environment === 'production') {
   sequelize = new Sequelize(
-    process.env[config.use_env_variable], config
-  );
-  sequelize = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASS, {
-      host: process.env.DB_HOST,
-      port: process.env.DB_PORT,
+    process.env.SQL_DATABASE,
+    process.env.SQL_USER,
+    process.env.SQL_PASSWORD,
+    {
+      host: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`,
+      port: 5432,
       dialect: 'postgres',
       dialectOption: {
         ssl: true,
-        native: true
+        native: true,
+        socketPath: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`
       },
       logging: true
     }
@@ -57,4 +55,4 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-export default db;
+module.exports = db;

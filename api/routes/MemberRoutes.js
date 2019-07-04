@@ -1,12 +1,12 @@
-import { Router } from 'express';
-import MemberController from '../controllers/MemberController';
+const express = require('express');
+const MemberController = require('../controllers/MemberController');
 
-const router = Router();
+const router = express.Router();
 
-router.get('/', MemberController.getAllGuilds);
-router.post('/', MemberController.addGuild);
-router.get('/:id', MemberController.getAGuild);
-router.put('/:id', MemberController.updatedGuild);
-router.delete('/:id', MemberController.deleteGuild);
+router.get('/guild/:gid', MemberController.getAllMembers);
+router.post('/', MemberController.addMember);
+router.get('/:id', MemberController.getAMember);
+router.put('/:id', MemberController.updatedMember);
+router.delete('/:id', MemberController.deleteMember);
 
 module.exports = router;

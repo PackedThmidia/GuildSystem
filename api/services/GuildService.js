@@ -1,4 +1,4 @@
-import database from '../../db/models';
+const database = require('../../db/models');
 
 class GuildService {
   static async getAllGuilds() {
@@ -63,4 +63,4 @@ class GuildService {
     }
   }
 }
-export default GuildService;
+module.exports = GuildService;

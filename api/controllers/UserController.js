@@ -1,6 +1,6 @@
 
-import UserService from '../services/UserService';
-import Util from '../utils/Utils';
+const UserService = require('../services/UserService');
+const Util = require('../utils/Utils');
 
 const util = new Util();
 
@@ -104,4 +104,4 @@ class UserController {
   }
 }
 
-export default UserController;
+module.exports = UserController;

@@ -1,32 +1,36 @@
 import database from '../../db/models';
 
-class MembershipService {
-  static async getAllMemberships() {
+class MemberService {
+  static async getAllMembers(id) {
     try {
-      return await database.Membership.findAll();
+      return await database.Member.findAll({
+        where: {
+          GuildId: id
+        },
+      });
     } catch (error) {
       throw error;
     }
   }
 
-  static async addGuild(newMembership) {
+  static async addMember(newMember) {
     try {
-      return await database.Membership.create(newMembership);
+      return await database.Member.create(newMember);
     } catch (error) {
       throw error;
     }
   }
 
-  static async updateMembership(id, updateMembership) {
+  static async updateMember(id, updateMember) {
     try {
-      const membershipToUpdate = await database.Membership.findOne({
+      const memberToUpdate = await database.Member.findOne({
         where: { id: Number(id) },
       });
 
-      if (membershipToUpdate) {
-        await database.Membership.update(updateMembership, { where: { id: Number(id) } });
+      if (memberToUpdate) {
+        await database.Member.update(updateMember, { where: { id: Number(id) } });
 
-        return updateMembership;
+        return updateMember;
       }
       return null;
     } catch (error) {
@@ -34,27 +38,27 @@ class MembershipService {
     }
   }
 
-  static async getAMembership(id) {
+  static async getAMember(id) {
     try {
-      const theMembership = await database.Membership.findOne({
+      const theMember = await database.Member.findOne({
         where: { id: Number(id) },
       });
 
-      return theMembership;
+      return theMember;
     } catch (error) {
       throw error;
     }
   }
 
-  static async deleteMembership(id) {
+  static async deleteMember(id) {
     try {
-      const membershipToDelete = await database.Membership.findOne({ where: { id: Number(id) } });
+      const memberToDelete = await database.Member.findOne({ where: { id: Number(id) } });
 
-      if (membershipToDelete) {
-        const deletedMembership = await database.Membership.destroy({
+      if (memberToDelete) {
+        const deletedMember = await database.Member.destroy({
           where: { id: Number(id) },
         });
-        return deletedMembership;
+        return deletedMember;
       }
       return null;
     } catch (error) {
@@ -63,4 +67,4 @@ class MembershipService {
   }
 }
 
-export default MembershipService;
+export default MemberService;

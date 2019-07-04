@@ -10,9 +10,12 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = (models) => {
     models.User.hasMany(models.Member, {
       onDelete: 'CASCADE',
-      foreignKey: {
-        allowNull: false,
-      },
+      // foreignKey: {
+      //   allowNull: false,
+      // },
+      foreignKey: 'UserId',
+      sourceKey: 'id',
+      constraint: false
     });
   };
 
