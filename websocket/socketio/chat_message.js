@@ -6,6 +6,6 @@ module.exports = (socket) => {
       timestamp: data.timestamp,
     };
     socket.broadcast.emit('CHAT_MESSAGE', msg);
-    console.log(`${socket.username} send message: ${data.message}`);
+    console.log(`${data.username} send message: ${data.message}`);
   });
 };
