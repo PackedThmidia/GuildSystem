@@ -18,22 +18,21 @@ module.exports.listen = (app) => {
       };
       clients.push(currentUser);
       io.sockets.emit('PLAY', currentUser);
-      //socket.broadcast.emit('PLAY', currentUser);
       console.log(`User ${currentUser.name} connected`);
     });
-
     // eslint-disable-next-line global-require
     require('./chat_message.js')(socket);
-
     socket.on('DISCONNECT', () => {
       console.log('User disconnected');
       socket.broadcast.emit('USER_DISCONNECTED', currentUser);
-      for (let i = 0; i < clients.length; i += 1) {
-        if (clients[i].name === currentUser.name) {
-          console.log(`User ${clients[i].name} disconnected`);
-          clients.splice(i, 1);
-        }
-      }
+      if (typeof currentUser.name !== 'undefined') {
+        for (let i = 0; i < clients.length; i += 1) {
+          if (clients[i].name === currentUser.name) {
+            console.log(`User ${clients[i].name} disconnected`);
+            clients.splice(i, 1);
+          }
+        } 
+}
     });
   });
 
